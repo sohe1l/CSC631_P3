@@ -7,6 +7,8 @@ public class SceneHelper : MonoBehaviour
     public Light scene_light;
     bool isDay = true;
 
+    public GameObject snow;
+
     public void GotoMenu()
     {
         SceneManager.LoadScene("Menu");
@@ -33,5 +35,20 @@ public class SceneHelper : MonoBehaviour
             scene_light.intensity = 1F;
         }
         isDay = !isDay;
+    }
+
+    public void SwitchSnow()
+    {
+        ParticleSystem snowPC = snow.GetComponent<ParticleSystem>();
+
+        if (snowPC.isEmitting)
+        {
+            snowPC.Stop();
+        }
+        else
+        {
+            snowPC.Play();
+        }
+
     }
 }
